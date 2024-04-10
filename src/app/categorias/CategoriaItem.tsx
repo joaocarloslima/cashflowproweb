@@ -3,11 +3,7 @@ import { Icon } from "@/components/Icon";
     
 
 interface CategoriaItemProps {
-    categoria : {
-        id: number,
-        nome: string,
-        icone: string
-    }
+    categoria : Categoria
 }
 
 export function CategoriaItem({ categoria }: CategoriaItemProps) {

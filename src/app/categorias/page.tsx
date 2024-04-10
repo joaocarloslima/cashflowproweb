@@ -2,26 +2,14 @@ import NavBar from "@/components/NavBar"
 import { CategoriaItem } from "./CategoriaItem";
 import { Button } from "@nextui-org/button";
 
-export default function Categorias() {
+export default async function Categorias() {
 
-  const categorias = [
-    {
-      id: 1,
-      nome: "alimentação",
-      icone: "apple"
-    },
-    {
-      id: 2,
-      nome: "transporte",
-      icone: "bus"
-    },
-    {
-      id: 3,
-      nome: "educação",
-      icone: "book"
-    },
-  ]
+  async function getCategorias (){
+    const resp = await fetch("http://localhost:8080/categoria")
+    return await resp.json()
+  }
 
+  const categorias : Array<Categoria> = await getCategorias()
 
   return (
     <main className="flex min-h-screen flex-col items-center">
