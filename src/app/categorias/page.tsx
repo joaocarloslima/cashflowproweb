@@ -3,13 +3,9 @@ import { CategoriaItem } from "./CategoriaItem";
 import { Button } from "@nextui-org/button";
 import { Plus } from "lucide-react";
 import Link from "next/link";
+import { getCategorias } from "@/app/actions/categorias/index";
 
 export default async function Categorias() {
-
-  async function getCategorias (){
-    const resp = await fetch("http://localhost:8080/categoria", {next:{ revalidate: 0 }})
-    return await resp.json()
-  }
 
   const categorias : Array<Categoria> = await getCategorias()
 
