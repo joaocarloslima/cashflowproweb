@@ -1,5 +1,5 @@
 import NavBar from "@/components/NavBar";
-import { getCategorias } from "@/app/actions/categorias/getCategorias";
+import { getCategorias } from "@/app/actions/categorias/index";
 import { Form } from "./Form";
 
 

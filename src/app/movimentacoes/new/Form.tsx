@@ -72,16 +72,16 @@ export function Form(props: { categorias: Array<Categoria> }) {
                 label="Tipo"
                 orientation="horizontal"
             >
-                <Radio value="ENTRADA" className="mr-5">
+                <Radio value="RECEITA" className="mr-5">
                     <div className="flex gap-2 items-center">
                         <ArrowDown className="text-green-500" />
-                        <span>Entrada</span>
+                        <span>Receita</span>
                     </div>
                 </Radio>
-                <Radio value="SAIDA">
+                <Radio value="DESPESA">
                     <div className="flex gap-2 items-center">
                         <ArrowUp className="text-red-500" />
-                        <span>Saída</span>
+                        <span>Despesa</span>
                     </div>
                 </Radio>
             </RadioGroup>
