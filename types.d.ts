@@ -9,6 +9,6 @@ interface Movimentacao {
     descricao: string,
     valor: number,
     data: string,
-    tipo: "ENTRADA" | "SAIDA",
-    categoria: Categoria
+    tipo: "ENTRADA" | "SAIDA"
+    
 }
