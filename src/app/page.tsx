@@ -1,26 +1,28 @@
 import CardStats from "@/components/Card"
 import MovimentacaoTable from "@/components/MovimentacaoTable";
 import NavBar from "@/components/NavBar"
+import { get } from "./actions/movimentacoes/get";
+import { getMaior, getMenor, getUltima } from "./actions/movimentacoes/dashboard";
 
-export default function Home() {
+export default async function Home() {
 
   // criar um server action para buscar esses dados da API
   const maior = {
     icon: "arrow-up",
     title: "Maior movimentação",
-    value: 99.00
+    value: await getMaior()
   }
 
   const menor = {
     icon: "arrow-down",
     title: "Menor movimentação",
-    value: 10.00
+    value: await getMenor()
   }
 
   const ultimo = {
     icon: "calendar",
     title: "Última movimentação",
-    value: 50.00
+    value: await getUltima()
   }
 
   const totais = [
@@ -30,43 +32,8 @@ export default function Home() {
   ]
 
   // criar um server action para buscar esses dados da API (5 últimas movimentações)
-  const ultimasMovimentacoes: Movimentacao[] = [
-    {
-      id: 1,
-      data: "19/04/2024",
-      descricao: "Compra no mercado",
-      valor: 100.00,
-      tipo: "SAIDA",
-    },
-    {
-      id: 2,
-      data: "18/04/2024",
-      descricao: "Compra de passagem",
-      valor: 25.00,
-      tipo: "SAIDA",
-    },
-    {
-      id: 3,
-      data: "17/04/2024",
-      descricao: "Compra de livro",
-      valor: 50.00,
-      tipo: "SAIDA",
-    },
-    {
-      id: 4,
-      data: "16/04/2024",
-      descricao: "Venda de livro",
-      valor: 20.00,
-      tipo: "ENTRADA",
-    },
-    {
-      id: 5,
-      data: "15/04/2024",
-      descricao: "Venda de livro",
-      valor: 20.00,
-      tipo: "ENTRADA",
-    },
-  ]
+  const data = await get()
+  const ultimasMovimentacoes: Movimentacao[] = data.content
 
   return (
     <main className="flex min-h-screen flex-col items-center gap-4">

@@ -1,4 +1,5 @@
 "use server"
+import { revalidatePath, revalidateTag } from "next/cache"
 import { redirect } from "next/navigation"
 
 interface ValidationError {
@@ -25,6 +26,7 @@ export async function create(prevState: any, formData: FormData){
     const resp = await fetch(process.env.API_BASE_URL + "/categoria", options)
 
     if (resp.ok){
+        revalidateTag("categorias")
         redirect("/categorias")
     }
 
